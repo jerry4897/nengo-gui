@@ -86,6 +86,9 @@ class Page(object):
         self.config_save_time = None   # time of last config file save
         self.config_save_period = 2.0  # minimum time between saves
 
+        self.keys_pressed = set()
+        self.key_codes_pressed = set()
+
         self.lock = threading.Lock()
 
         # use the default filename if none is given
@@ -117,6 +120,7 @@ class Page(object):
         t = threading.Thread(target=self.runner)
         t.daemon = True
         t.start()
+        self.running_thread = t
 
     @property
     def sim(self):
