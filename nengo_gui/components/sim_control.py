@@ -197,8 +197,6 @@ class SimControl(Component):
         elif msg == 'continue':
             if self.page.sim is None:
                 self.page.rebuild = True
-                if 'on_start' in self.page.locals:
-                    self.page.locals['on_start'](self.page.sim)
             else:
                 if 'on_continue' in self.page.locals:
                     self.page.locals['on_continue'](self.page.sim)

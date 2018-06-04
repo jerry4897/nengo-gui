@@ -491,6 +491,8 @@ class Page(object):
             if self.sim is not None:
                 if self.settings.backend in Page.singleton_sims:
                     Page.singleton_sims[self.settings.backend] = self
+                if 'on_start' in self.locals:
+                    self.locals['on_start'](self.sim)
 
             # remove the temporary components added for visualization
             for c in self.components:
